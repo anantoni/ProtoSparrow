@@ -10,14 +10,37 @@
 *.txt
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+ProtoClient/hs_err_pid*
 
 # Netbeans specific
-nbproject/private/
-build
-nbbuild
-dist
-nbdist
-nbactions.xml
-nb-configuration.xml
+ProtoClient/nbproject/private/
+ProtoClient/build
+ProtoClient/nbbuild
+ProtoClient/dist
+ProtoClient/nbdist
+ProtoClient/nbactions.xml
+ProtoClient/nb-configuration.xml
 
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+ProtoScheduler/hs_err_pid*
+
+# Netbeans specific
+ProtoScheduler/nbproject/private/
+ProtoScheduler/build
+ProtoScheduler/nbbuild
+ProtoScheduler/dist
+ProtoScheduler/nbdist
+ProtoScheduler/nbactions.xml
+ProtoScheduler/nb-configuration.xml
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+ProtoWorker/hs_err_pid*
+
+# Netbeans specific
+ProtoWorker/nbproject/private/
+ProtoWorker/build
+ProtoWorker/nbbuild
+ProtoWorker/dist
+ProtoWorker/nbdist
+ProtoWorker/nbactions.xml
+ProtoWorker/nb-configuration.xml
