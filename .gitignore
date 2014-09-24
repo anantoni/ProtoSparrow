@@ -44,3 +44,6 @@ ProtoWorker/dist
 ProtoWorker/nbdist
 ProtoWorker/nbactions.xml
 ProtoWorker/nb-configuration.xml
+/ProtoWorker_1/nbproject/private/
+/ProtoWorker_2/nbproject/private/
+/ProtoWorker_3/nbproject/private/

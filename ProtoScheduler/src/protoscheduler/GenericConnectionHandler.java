@@ -16,6 +16,7 @@ import com.java.sparrow.protocol.ClientSchedulerProtoc.SchedulerResponse;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import policies.PerTaskSamplingSchedulingPolicy;
 import policies.RandomSchedulingPolicy;
 import policies.SchedulingPolicy;
 import utils.Task;
@@ -70,7 +71,8 @@ public class GenericConnectionHandler implements Runnable{
                 }
                 
                 // set policy and select worker to send task to
-                SchedulingPolicy policy = new RandomSchedulingPolicy();
+                //SchedulingPolicy policy = new RandomSchedulingPolicy();
+                SchedulingPolicy policy = new PerTaskSamplingSchedulingPolicy();
                 for (int i = 0; i < job.getTimesToExecute() ; i++)
                      for (int j = 0; j < job.getTaskNumber() ; j++) {
                          Socket workerSocket = policy.selectWorker();
