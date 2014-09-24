@@ -50,7 +50,7 @@ public class TaskCommThread implements Runnable{
             nextMessageType.build().writeDelimitedTo(socket.getOutputStream());
 
             // build task message
-            SchedulerWorkerProtoc.Task.Builder taskMessage = SchedulerWorkerProtoc.Task.newBuilder();
+            SchedulerWorkerProtoc.TaskMessage.Builder taskMessage = SchedulerWorkerProtoc.TaskMessage.newBuilder();
             taskMessage.setJobId(task.getJobID());
             taskMessage.setTaskId(task.getTaskID());
             taskMessage.setTaskCommand(task.getCommand());
@@ -59,6 +59,12 @@ public class TaskCommThread implements Runnable{
             taskMessage.build().writeDelimitedTo(socket.getOutputStream());
         }   catch (IOException ex) {
             Logger.getLogger(TaskCommThread.class.getName()).log(Level.SEVERE, null, ex);
+        }   finally {
+            try {
+                socket.close();
+            } catch (IOException ex) {
+                Logger.getLogger(TaskCommThread.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         

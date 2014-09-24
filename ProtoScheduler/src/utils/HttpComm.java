@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 import policies.PerTaskSamplingSchedulingPolicy;
         
 /**
@@ -56,19 +57,18 @@ public class HttpComm {
     }
     
     public static String heartbeat(String workerURL) {
-        String[] pieces = workerURL.split(":");
-        String hostname = pieces[0] + pieces[1];
-        int port = Integer.parseInt(pieces[2]);
+        Pair<String, Integer> hp= splitURL(workerURL);
         Socket socket = null;
         try {
-            socket = new Socket(hostname, port);
+            System.out.println(hp.getKey() + ":" + hp.getValue());
+            socket = new Socket(hp.getKey(), hp.getValue());
              // write next message type = probe to socket
             ClientSchedulerProtoc.NextMessageType.Builder nextMessageType = ClientSchedulerProtoc.NextMessageType.newBuilder();
             nextMessageType.setType(ClientSchedulerProtoc.NextMessageType.MessageType.HEARTBEAT);
             // send next message type message
             nextMessageType.build().writeDelimitedTo(socket.getOutputStream());
            
-            // receive probe response from worker
+            // receive heartbeat response from worker
             HeartBeatResponse response = HeartBeatResponse.parseDelimitedFrom(socket.getInputStream());
             if (response.getStatus() == HeartBeatResponse.StatusType.OK) {
                 return "OK";
@@ -87,6 +87,11 @@ public class HttpComm {
         }
         
         return "";
+    }
+    
+    public static Pair<String, Integer> splitURL(String url) {
+       String[] pieces = url.split(":");
+       return new Pair<>(pieces[0], Integer.parseInt(pieces[1]));
     }
     
 //    public static Map<String, String> multiProbe( List<String> workersList ) throws Exception {

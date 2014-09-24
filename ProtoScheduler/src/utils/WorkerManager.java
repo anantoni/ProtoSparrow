@@ -44,7 +44,7 @@ public class WorkerManager {
         write.lock();
         for (String workerURL :workerList) {
             String result = HttpComm.heartbeat(workerURL);
-            if (result.equals("result:success"))
+            if (result.equals("OK"))
                     workerMap.put(workerURL, "OK");
             else
                     workerMap.put(workerURL, "DOWN");
@@ -72,7 +72,7 @@ public class WorkerManager {
         write.lock();
         for (String workerURL : workerMap.keySet()) {
             String result = HttpComm.heartbeat(workerURL);
-            if (result.equals("result:success"))
+            if (result.equals("OK"))
                 workerMap.put(workerURL, "OK");
             else
                 workerMap.put(workerURL, "DOWN");

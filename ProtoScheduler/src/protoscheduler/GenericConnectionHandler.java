@@ -54,8 +54,9 @@ public class GenericConnectionHandler implements Runnable{
             // else if new job batch
             else if (expectedType.getType() == NextMessageType.MessageType.JOB_BATCH) {
                 JobBatch job = JobBatch.parseDelimitedFrom(socket.getInputStream());
-                System.out.println(job.getTimesToExecute() + " " + 
-                                                job.getTaskCommand() + " " + job.getTaskNumber());
+                System.out.println( job.getTimesToExecute() + " " + 
+                                                 job.getTaskCommand() + " " + 
+                                                 job.getTaskNumber());
                 
                 // process request
                 

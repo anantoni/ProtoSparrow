@@ -3,7 +3,7 @@ package ProtocolBuffers;
 option java_package = "com.java.sparrow.protocol";
 option java_outer_classname = "SchedulerWorkerProtoc";
 
-message Task {
+message TaskMessage {
     required int32 job_id = 1;
     required int32 task_id = 2;
     required string task_command = 3;
@@ -15,6 +15,15 @@ message ProbeResponse {
 }
 
 message HeartBeatResponse {
+    enum StatusType {
+        OK = 0;
+        FAIL = 1;
+    }
+    
+    required StatusType status = 1 [default = OK];
+}
+
+message WorkerReponse {
     enum StatusType {
         OK = 0;
         FAIL = 1;

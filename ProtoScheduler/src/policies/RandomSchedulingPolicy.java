@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
+import utils.HttpComm;
 
 /**
  *
@@ -35,15 +37,13 @@ public class RandomSchedulingPolicy implements SchedulingPolicy {
                  if (Collections.frequency(workerMap.values(), "OK") == 1) {
                         for (String workerURL : workerMap.keySet()) 
                                 if (workerMap.get(workerURL).equals("OK")) {
-                                    String[] pieces = workerURL.split(":");
-                                    String hostname = pieces[0] + pieces[1];
-                                    int port = Integer.parseInt(pieces[2]);
+                                    Pair<String, Integer> hp = HttpComm.splitURL(workerURL);
                                     Socket socket;
-                                   try {
-                                       socket = new Socket(hostname, port);
-                                       return socket;
-                                   } catch (IOException ex) {
-                                       Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
+                                    try {
+                                        socket = new Socket(hp.getKey(), hp.getValue());
+                                        return socket;
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
                                    }
                                 }
                 }
@@ -55,10 +55,17 @@ public class RandomSchedulingPolicy implements SchedulingPolicy {
                 do {
                         Random random    = new Random();
                         List<String> keys  = new ArrayList<>(workerMap.keySet());
-                        workerURL = keys.get(random.nextInt(keys.size()));      
+                        workerURL = keys.get(random.nextInt(keys.size()));    
+                        Pair<String, Integer> hp = HttpComm.splitURL(workerURL);
+                        Socket socket;
+                        try {
+                           socket = new Socket(hp.getKey(), hp.getValue());
+                           return socket;
+                       } catch (IOException ex) {
+                           Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
+                       }
                 } while (workerMap.get(workerURL).equals("DOWN"));
                 WorkerManager.getReadLock().unlock();
-                //System.out.println( "Random scheduling policy: " + workerURL);
                 
                 return null;
         }
