@@ -43,10 +43,9 @@ class GenericConnectionHandler implements Runnable {
             // if probe from scheduler
             if (expectedType.getType() == NextMessageType.MessageType.PROBE) {
                 ProbeResponse.Builder response = ProbeResponse.newBuilder();
-                
-                response.setLoad(taskExecutor.getPoolSize() + taskExecutor.getActiveCount());
+                response.setLoad(taskExecutor.getPoolSize());
                 // send probe respnse aka "load"
-                response.build().writeTo(socket.getOutputStream());
+                response.build().writeDelimitedTo(socket.getOutputStream());
             }
             // else if heartbeat
             else if (expectedType.getType() == NextMessageType.MessageType.HEARTBEAT) {
