@@ -8,8 +8,8 @@ public final class SchedulerWorkerProtoc {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface TaskOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ProtocolBuffers.Task)
+  public interface TaskMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ProtocolBuffers.TaskMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -45,25 +45,25 @@ public final class SchedulerWorkerProtoc {
         getTaskCommandBytes();
   }
   /**
-   * Protobuf type {@code ProtocolBuffers.Task}
+   * Protobuf type {@code ProtocolBuffers.TaskMessage}
    */
-  public static final class Task extends
+  public static final class TaskMessage extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ProtocolBuffers.Task)
-      TaskOrBuilder {
-    // Use Task.newBuilder() to construct.
-    private Task(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ProtocolBuffers.TaskMessage)
+      TaskMessageOrBuilder {
+    // Use TaskMessage.newBuilder() to construct.
+    private TaskMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private Task(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private TaskMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final Task defaultInstance;
-    public static Task getDefaultInstance() {
+    private static final TaskMessage defaultInstance;
+    public static TaskMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public Task getDefaultInstanceForType() {
+    public TaskMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -73,7 +73,7 @@ public final class SchedulerWorkerProtoc {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Task(
+    private TaskMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -126,28 +126,28 @@ public final class SchedulerWorkerProtoc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_Task_descriptor;
+      return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_TaskMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_Task_fieldAccessorTable
+      return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_TaskMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.class, com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.Builder.class);
+              com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.class, com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Task> PARSER =
-        new com.google.protobuf.AbstractParser<Task>() {
-      public Task parsePartialFrom(
+    public static com.google.protobuf.Parser<TaskMessage> PARSER =
+        new com.google.protobuf.AbstractParser<TaskMessage>() {
+      public TaskMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Task(input, extensionRegistry);
+        return new TaskMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Task> getParserForType() {
+    public com.google.protobuf.Parser<TaskMessage> getParserForType() {
       return PARSER;
     }
 
@@ -296,53 +296,53 @@ public final class SchedulerWorkerProtoc {
       return super.writeReplace();
     }
 
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(byte[] data)
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(java.io.InputStream input)
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseDelimitedFrom(java.io.InputStream input)
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseDelimitedFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parseFrom(
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -351,7 +351,7 @@ public final class SchedulerWorkerProtoc {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.java.sparrow.protocol.SchedulerWorkerProtoc.Task prototype) {
+    public static Builder newBuilder(com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -363,25 +363,25 @@ public final class SchedulerWorkerProtoc {
       return builder;
     }
     /**
-     * Protobuf type {@code ProtocolBuffers.Task}
+     * Protobuf type {@code ProtocolBuffers.TaskMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ProtocolBuffers.Task)
-        com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ProtocolBuffers.TaskMessage)
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_Task_descriptor;
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_TaskMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_Task_fieldAccessorTable
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_TaskMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.class, com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.Builder.class);
+                com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.class, com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.Builder.class);
       }
 
-      // Construct using com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.newBuilder()
+      // Construct using com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -416,23 +416,23 @@ public final class SchedulerWorkerProtoc {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_Task_descriptor;
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_TaskMessage_descriptor;
       }
 
-      public com.java.sparrow.protocol.SchedulerWorkerProtoc.Task getDefaultInstanceForType() {
-        return com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.getDefaultInstance();
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage getDefaultInstanceForType() {
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.getDefaultInstance();
       }
 
-      public com.java.sparrow.protocol.SchedulerWorkerProtoc.Task build() {
-        com.java.sparrow.protocol.SchedulerWorkerProtoc.Task result = buildPartial();
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage build() {
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.java.sparrow.protocol.SchedulerWorkerProtoc.Task buildPartial() {
-        com.java.sparrow.protocol.SchedulerWorkerProtoc.Task result = new com.java.sparrow.protocol.SchedulerWorkerProtoc.Task(this);
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage buildPartial() {
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage result = new com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -453,16 +453,16 @@ public final class SchedulerWorkerProtoc {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.java.sparrow.protocol.SchedulerWorkerProtoc.Task) {
-          return mergeFrom((com.java.sparrow.protocol.SchedulerWorkerProtoc.Task)other);
+        if (other instanceof com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage) {
+          return mergeFrom((com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.java.sparrow.protocol.SchedulerWorkerProtoc.Task other) {
-        if (other == com.java.sparrow.protocol.SchedulerWorkerProtoc.Task.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage other) {
+        if (other == com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage.getDefaultInstance()) return this;
         if (other.hasJobId()) {
           setJobId(other.getJobId());
         }
@@ -498,11 +498,11 @@ public final class SchedulerWorkerProtoc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.java.sparrow.protocol.SchedulerWorkerProtoc.Task parsedMessage = null;
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.java.sparrow.protocol.SchedulerWorkerProtoc.Task) e.getUnfinishedMessage();
+          parsedMessage = (com.java.sparrow.protocol.SchedulerWorkerProtoc.TaskMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -653,15 +653,15 @@ public final class SchedulerWorkerProtoc {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ProtocolBuffers.Task)
+      // @@protoc_insertion_point(builder_scope:ProtocolBuffers.TaskMessage)
     }
 
     static {
-      defaultInstance = new Task(true);
+      defaultInstance = new TaskMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:ProtocolBuffers.Task)
+    // @@protoc_insertion_point(class_scope:ProtocolBuffers.TaskMessage)
   }
 
   public interface ProbeResponseOrBuilder extends
@@ -1565,11 +1565,507 @@ public final class SchedulerWorkerProtoc {
     // @@protoc_insertion_point(class_scope:ProtocolBuffers.HeartBeatResponse)
   }
 
+  public interface WorkerResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ProtocolBuffers.WorkerResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+     */
+    com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType getStatus();
+  }
+  /**
+   * Protobuf type {@code ProtocolBuffers.WorkerResponse}
+   */
+  public static final class WorkerResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ProtocolBuffers.WorkerResponse)
+      WorkerResponseOrBuilder {
+    // Use WorkerResponse.newBuilder() to construct.
+    private WorkerResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private WorkerResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final WorkerResponse defaultInstance;
+    public static WorkerResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public WorkerResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private WorkerResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType value = com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                status_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_WorkerResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_WorkerResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.class, com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<WorkerResponse> PARSER =
+        new com.google.protobuf.AbstractParser<WorkerResponse>() {
+      public WorkerResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new WorkerResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WorkerResponse> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code ProtocolBuffers.WorkerResponse.StatusType}
+     */
+    public enum StatusType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>OK = 0;</code>
+       */
+      OK(0, 0),
+      /**
+       * <code>FAIL = 1;</code>
+       */
+      FAIL(1, 1),
+      ;
+
+      /**
+       * <code>OK = 0;</code>
+       */
+      public static final int OK_VALUE = 0;
+      /**
+       * <code>FAIL = 1;</code>
+       */
+      public static final int FAIL_VALUE = 1;
+
+
+      public final int getNumber() { return value; }
+
+      public static StatusType valueOf(int value) {
+        switch (value) {
+          case 0: return OK;
+          case 1: return FAIL;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<StatusType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<StatusType>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<StatusType>() {
+              public StatusType findValueByNumber(int number) {
+                return StatusType.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final StatusType[] VALUES = values();
+
+      public static StatusType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private StatusType(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:ProtocolBuffers.WorkerResponse.StatusType)
+    }
+
+    private int bitField0_;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType status_;
+    /**
+     * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+     */
+    public com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType getStatus() {
+      return status_;
+    }
+
+    private void initFields() {
+      status_ = com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType.OK;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, status_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, status_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ProtocolBuffers.WorkerResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ProtocolBuffers.WorkerResponse)
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_WorkerResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_WorkerResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.class, com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.Builder.class);
+      }
+
+      // Construct using com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        status_ = com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType.OK;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.internal_static_ProtocolBuffers_WorkerResponse_descriptor;
+      }
+
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse getDefaultInstanceForType() {
+        return com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.getDefaultInstance();
+      }
+
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse build() {
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse buildPartial() {
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse result = new com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.status_ = status_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse) {
+          return mergeFrom((com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse other) {
+        if (other == com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStatus()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType status_ = com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType.OK;
+      /**
+       * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+       */
+      public com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType getStatus() {
+        return status_;
+      }
+      /**
+       * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+       */
+      public Builder setStatus(com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .ProtocolBuffers.WorkerResponse.StatusType status = 1 [default = OK];</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = com.java.sparrow.protocol.SchedulerWorkerProtoc.WorkerResponse.StatusType.OK;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ProtocolBuffers.WorkerResponse)
+    }
+
+    static {
+      defaultInstance = new WorkerResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ProtocolBuffers.WorkerResponse)
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ProtocolBuffers_Task_descriptor;
+    internal_static_ProtocolBuffers_TaskMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ProtocolBuffers_Task_fieldAccessorTable;
+      internal_static_ProtocolBuffers_TaskMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ProtocolBuffers_ProbeResponse_descriptor;
   private static
@@ -1580,6 +2076,11 @@ public final class SchedulerWorkerProtoc {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ProtocolBuffers_HeartBeatResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ProtocolBuffers_WorkerResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ProtocolBuffers_WorkerResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1590,13 +2091,16 @@ public final class SchedulerWorkerProtoc {
   static {
     java.lang.String[] descriptorData = {
       "\n\033SchedulerWorkerProtoc.proto\022\017ProtocolB" +
-      "uffers\"=\n\004Task\022\016\n\006job_id\030\001 \002(\005\022\017\n\007task_i" +
-      "d\030\002 \002(\005\022\024\n\014task_command\030\003 \002(\t\"\035\n\rProbeRe" +
-      "sponse\022\014\n\004load\030\001 \002(\005\"v\n\021HeartBeatRespons" +
-      "e\022A\n\006status\030\001 \002(\0162-.ProtocolBuffers.Hear" +
-      "tBeatResponse.StatusType:\002OK\"\036\n\nStatusTy" +
-      "pe\022\006\n\002OK\020\000\022\010\n\004FAIL\020\001B2\n\031com.java.sparrow" +
-      ".protocolB\025SchedulerWorkerProtoc"
+      "uffers\"D\n\013TaskMessage\022\016\n\006job_id\030\001 \002(\005\022\017\n" +
+      "\007task_id\030\002 \002(\005\022\024\n\014task_command\030\003 \002(\t\"\035\n\r" +
+      "ProbeResponse\022\014\n\004load\030\001 \002(\005\"v\n\021HeartBeat" +
+      "Response\022A\n\006status\030\001 \002(\0162-.ProtocolBuffe" +
+      "rs.HeartBeatResponse.StatusType:\002OK\"\036\n\nS" +
+      "tatusType\022\006\n\002OK\020\000\022\010\n\004FAIL\020\001\"p\n\016WorkerRes" +
+      "ponse\022>\n\006status\030\001 \002(\0162*.ProtocolBuffers." +
+      "WorkerResponse.StatusType:\002OK\"\036\n\nStatusT" +
+      "ype\022\006\n\002OK\020\000\022\010\n\004FAIL\020\001B2\n\031com.java.sparro",
+      "w.protocolB\025SchedulerWorkerProtoc"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1610,11 +2114,11 @@ public final class SchedulerWorkerProtoc {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_ProtocolBuffers_Task_descriptor =
+    internal_static_ProtocolBuffers_TaskMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ProtocolBuffers_Task_fieldAccessorTable = new
+    internal_static_ProtocolBuffers_TaskMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ProtocolBuffers_Task_descriptor,
+        internal_static_ProtocolBuffers_TaskMessage_descriptor,
         new java.lang.String[] { "JobId", "TaskId", "TaskCommand", });
     internal_static_ProtocolBuffers_ProbeResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
@@ -1627,6 +2131,12 @@ public final class SchedulerWorkerProtoc {
     internal_static_ProtocolBuffers_HeartBeatResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ProtocolBuffers_HeartBeatResponse_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_ProtocolBuffers_WorkerResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ProtocolBuffers_WorkerResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ProtocolBuffers_WorkerResponse_descriptor,
         new java.lang.String[] { "Status", });
   }
 
