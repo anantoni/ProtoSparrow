@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 
 /**
  *
@@ -30,7 +31,7 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
     }
 
     @Override
-    public Socket selectWorker() {
+    public Pair<String, Integer> selectWorker() {
         WorkerManager.getReadLock().lock();
         Map<String,String> workerMap = WorkerManager.getWorkerMap();        
         Random random    = new Random();
@@ -39,15 +40,9 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
         if (Collections.frequency(workerMap.values(), "OK") == 1) {
             for (String workerURL : workerMap.keySet()) 
                     if (workerMap.get(workerURL).equals("OK")) {
-                         String[] pieces = workerURL.split(":");
-                         String hostname = pieces[0] + pieces[1];
-                         int port = Integer.parseInt(pieces[2]);
-                         Socket socket;
-                        try {
-                            socket = new Socket(hostname, port);
-                        } catch (IOException ex) {
-                            Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                         Pair<String, Integer> hp = HttpComm.splitURL(workerURL);
+                         WorkerManager.getReadLock().unlock();
+                         return hp;
                     }
         }
         else if (Collections.frequency(workerMap.values(), "OK") == 0) {
@@ -68,13 +63,11 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
         
         WorkerManager.getReadLock().unlock();
         
-        String[] pieces = workerURL.split(":");
-        String hostname = pieces[0] + pieces[1];
-        int port = Integer.parseInt(pieces[2]);
+        Pair<String, Integer> hp = HttpComm.splitURL(workerURL);
         int result = -1;
         Socket socket = null;
         try {
-            socket = new Socket(hostname, port);
+            socket = new Socket(hp.getKey(), hp.getValue());
             result = HttpComm.probe(socket);
         } catch (IOException ex) {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,42 +81,25 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        pieces = workerURL.split(":");
-        hostname = pieces[0] + pieces[1];
-        port = Integer.parseInt(pieces[2]);
+        Pair<String, Integer> hp1 = HttpComm.splitURL(workerURL1);
         int result1 = -1;
         Socket socket1 = null;
         try {
-            socket1 = new Socket(hostname, port);
+            socket1 = new Socket(hp.getKey(), hp.getValue());
             result = HttpComm.probe(socket1);
         } catch (IOException ex) {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }       
+        
         try {
-            
-            //System.out.println("Worker " + workerURL + ": " + result);
-        } catch (Exception ex) {
+            socket.close();
+            socket1.close();
+        } catch (IOException ex) {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if (result1 > result) {
-            try {
-                socket.close();
-            } catch (IOException ex) {
-                Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return socket1;
-        }
-        else {
-            try {
-                socket1.close();
-            } catch (IOException ex) {
-                Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return socket;
-        }
+        return result > result1? hp1 : hp;
     }   
 
     @Override

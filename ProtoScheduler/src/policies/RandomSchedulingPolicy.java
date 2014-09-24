@@ -31,43 +31,32 @@ public class RandomSchedulingPolicy implements SchedulingPolicy {
         }
 
         @Override
-        public Socket selectWorker() {
+        public Pair<String, Integer> selectWorker() {
                 WorkerManager.getReadLock().lock();
                 Map<String,String> workerMap = WorkerManager.getWorkerMap();
                  if (Collections.frequency(workerMap.values(), "OK") == 1) {
                         for (String workerURL : workerMap.keySet()) 
                                 if (workerMap.get(workerURL).equals("OK")) {
                                     Pair<String, Integer> hp = HttpComm.splitURL(workerURL);
-                                    Socket socket;
-                                    try {
-                                        socket = new Socket(hp.getKey(), hp.getValue());
-                                        return socket;
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
-                                   }
+                                    WorkerManager.getReadLock().unlock();
+                                    return hp;
                                 }
                 }
                 else if (Collections.frequency(workerMap.values(), "OK") == 0) {
                         System.err.println("CRITICAL: All workers down - Exiting ");
                         System.exit(-1);
                 }
-                String workerURL = "";
+                Pair<String, Integer> hp;
+                String workerURL;
                 do {
                         Random random    = new Random();
                         List<String> keys  = new ArrayList<>(workerMap.keySet());
                         workerURL = keys.get(random.nextInt(keys.size()));    
-                        Pair<String, Integer> hp = HttpComm.splitURL(workerURL);
-                        Socket socket;
-                        try {
-                           socket = new Socket(hp.getKey(), hp.getValue());
-                           return socket;
-                       } catch (IOException ex) {
-                           Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
-                       }
+                        hp = HttpComm.splitURL(workerURL);
                 } while (workerMap.get(workerURL).equals("DOWN"));
                 WorkerManager.getReadLock().unlock();
                 
-                return null;
+                return hp;
         }
 
     @Override

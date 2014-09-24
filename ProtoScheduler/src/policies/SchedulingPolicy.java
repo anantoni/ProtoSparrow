@@ -6,7 +6,7 @@
 
 package policies;
 
-import java.net.Socket;
+import javafx.util.Pair;
 
 /**
  *
@@ -14,6 +14,6 @@ import java.net.Socket;
  */
 public interface SchedulingPolicy {
     public void setWorkerManager();
-    public Socket selectWorker();
+    public Pair<String, Integer> selectWorker();
     public String selectBatchWorker(int size);
 }

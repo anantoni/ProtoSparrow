@@ -53,7 +53,7 @@ public class ProtoClientThread implements Runnable{
         //creating jobs for http requests to scheduler
 
         //set number of jobs
-        int numOfJobs = 5;
+        int numOfJobs = 50;
 
         // build job batch message
         NextMessageType.Builder nextMessageType = NextMessageType.newBuilder();

@@ -7,8 +7,10 @@
 package utils;
 
 import com.java.sparrow.protocol.ClientSchedulerProtoc;
+import com.java.sparrow.protocol.ClientSchedulerProtoc.NextMessageType;
 import com.java.sparrow.protocol.SchedulerWorkerProtoc;
 import com.java.sparrow.protocol.SchedulerWorkerProtoc.HeartBeatResponse;
+import com.java.sparrow.protocol.SchedulerWorkerProtoc.ProbeResponse;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -41,13 +43,13 @@ public class HttpComm {
         
         try {
             // write next message type = probe to socket
-            ClientSchedulerProtoc.NextMessageType.Builder nextMessageType = ClientSchedulerProtoc.NextMessageType.newBuilder();
-            nextMessageType.setType(ClientSchedulerProtoc.NextMessageType.MessageType.TASK);
+           NextMessageType.Builder nextMessageType = NextMessageType.newBuilder();
+            nextMessageType.setType(NextMessageType.MessageType.PROBE);
             // send next message type message
             nextMessageType.build().writeDelimitedTo(socket.getOutputStream());
            
             // receive probe response from worker
-            SchedulerWorkerProtoc.ProbeResponse response = SchedulerWorkerProtoc.ProbeResponse.parseDelimitedFrom(socket.getInputStream());
+            ProbeResponse response = ProbeResponse.parseDelimitedFrom(socket.getInputStream());
             return response.getLoad();
             
         }   catch (IOException ex) {
@@ -63,8 +65,8 @@ public class HttpComm {
             System.out.println(hp.getKey() + ":" + hp.getValue());
             socket = new Socket(hp.getKey(), hp.getValue());
              // write next message type = probe to socket
-            ClientSchedulerProtoc.NextMessageType.Builder nextMessageType = ClientSchedulerProtoc.NextMessageType.newBuilder();
-            nextMessageType.setType(ClientSchedulerProtoc.NextMessageType.MessageType.HEARTBEAT);
+            NextMessageType.Builder nextMessageType = NextMessageType.newBuilder();
+            nextMessageType.setType(NextMessageType.MessageType.HEARTBEAT);
             // send next message type message
             nextMessageType.build().writeDelimitedTo(socket.getOutputStream());
            
