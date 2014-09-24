@@ -10,9 +10,12 @@ import com.java.sparrow.protocol.ClientSchedulerProtoc;
 import com.java.sparrow.protocol.SchedulerWorkerProtoc;
 import java.io.IOException;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import utils.Task;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utils.StatsLog;
 
 /**
  *
@@ -43,6 +46,9 @@ public class TaskCommThread implements Runnable{
 //        StatsLog.writeToLog(ft.format(dNow) + " Thread #" + Thread.currentThread().getId() + " started");
 
         try {
+            Date dNow = new Date( );
+            SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+            StatsLog.writeToLog(ft.format(dNow) + " Thread #" + Thread.currentThread().getId() + " Sending job #" + task.getJobID() + " task #" + task.getTaskID() + " to worker: " + socket.getRemoteSocketAddress());
             // write next message type = task to socket
             ClientSchedulerProtoc.NextMessageType.Builder nextMessageType = ClientSchedulerProtoc.NextMessageType.newBuilder();
             nextMessageType.setType(ClientSchedulerProtoc.NextMessageType.MessageType.TASK);

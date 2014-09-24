@@ -30,7 +30,7 @@ public class ProtoWorker {
         
         System.out.println("Listening on port: " + args[0]);
         
-        int fixedExecutorSize = 8;
+        int fixedExecutorSize = 4;
          //Creating fixed size executor
         ThreadPoolExecutor taskExecutor = new ThreadPoolExecutor( fixedExecutorSize, 
                                                                                                                       fixedExecutorSize, 0L, 

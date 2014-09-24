@@ -24,20 +24,18 @@ public class ProtoClient {
     /**
      * @param args the command line arguments
      */
-
     public static void main(String[] args) {
         loadSchedulers();
         ExecutorService executor = Executors.newFixedThreadPool(4);
 
         for (int i = 0; i < 4; i++) {
             Pair<String, Integer> chosenScheduler = chooseScheduler();
-            Runnable worker = new ProtoClientThread(chosenScheduler.getKey(),
-                                                                                 chosenScheduler.getValue());
+            Runnable worker = new ProtoClientThread( chosenScheduler.getKey(),
+                                                                                         chosenScheduler.getValue(),
+                                                                                         i);
             executor.execute(worker);
         }
-
         executor.shutdown();
-
         while (!executor.isTerminated()) {}
   }
     
@@ -68,7 +66,6 @@ public class ProtoClient {
                 }   
             }
         }
-
         return schedulers;
     }
   

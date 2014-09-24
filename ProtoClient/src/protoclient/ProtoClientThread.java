@@ -23,11 +23,13 @@ public class ProtoClientThread implements Runnable{
     private final String schedulerHostname;
     private final int schedulerPort;
     private Socket socket;
+    private final int threadCounter;
 
     /*constructor*/
-    public ProtoClientThread(String hostname, int port) {
+    public ProtoClientThread(String hostname, int port, int threadCounter) {
         this.schedulerHostname = hostname;
         this.schedulerPort = port;
+        this.threadCounter = threadCounter;
     }
 
     /*interface methods*/
@@ -53,44 +55,44 @@ public class ProtoClientThread implements Runnable{
         //set number of jobs
         int numOfJobs = 5;
 
-        for(int j=0; j< numOfJobs; j++){
-            
-            // build job batch message
-            NextMessageType.Builder nextMessageType = NextMessageType.newBuilder();
-            nextMessageType.setType(NextMessageType.MessageType.JOB_BATCH);
-            try {
-                nextMessageType.build().writeDelimitedTo(socket.getOutputStream());
-            } catch (IOException ex) {
-                Logger.getLogger(ProtoClientThread.class.getName()).log(Level.SEVERE, null, ex);
+        // build job batch message
+        NextMessageType.Builder nextMessageType = NextMessageType.newBuilder();
+        nextMessageType.setType(NextMessageType.MessageType.JOB_BATCH);
+        try {
+            nextMessageType.build().writeDelimitedTo(socket.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(ProtoClientThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JobBatch.Builder jobBatch = JobBatch.newBuilder();
+        jobBatch.setTimesToExecute(numOfJobs);
+        
+        // make job selection depending on thread counter
+        int jobSelection = threadCounter%2;
+        System.out.println("job selection " + jobSelection);
+        if (jobSelection == 0)
+                jobBatch.setTaskCommand("task1.sh");
+        else
+                jobBatch.setTaskCommand("task2.sh");
+        jobBatch.setTaskNumber(10);
+
+        // write job batch message to socket
+        try {
+            jobBatch.build().writeDelimitedTo (socket.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(ProtoClientThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // receive response from scheduler
+        try {
+            SchedulerResponse response = SchedulerResponse.parseDelimitedFrom(socket.getInputStream());
+            if (response.getStatus() == SchedulerResponse.StatusType.OK) {
+                System.out.println("Scheduler received job batch successfully");
             }
-            JobBatch.Builder jobBatch = JobBatch.newBuilder();
-            jobBatch.setTimesToExecute(numOfJobs);
-            int jobSelection = j%2;
-            if (jobSelection == 0)
-                    jobBatch.setTaskCommand("task1.sh");
-            else
-                    jobBatch.setTaskCommand("task2.sh");
-            jobBatch.setTaskNumber(10);
-            
-            // write job batch message to socket
-            try {
-                jobBatch.build().writeDelimitedTo (socket.getOutputStream());
-            } catch (IOException ex) {
-                Logger.getLogger(ProtoClientThread.class.getName()).log(Level.SEVERE, null, ex);
+            else {
+                System.out.println("Job batch not sent successfully");
             }
-            
-            // receive response from scheduler
-            try {
-                SchedulerResponse response = SchedulerResponse.parseDelimitedFrom(socket.getInputStream());
-                if (response.getStatus() == SchedulerResponse.StatusType.OK) {
-                    System.out.println("Scheduler received job batch successfully");
-                }
-                else {
-                    System.out.println("Job batch not sent successfully");
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(ProtoClientThread.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (IOException ex) {
+            Logger.getLogger(ProtoClientThread.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //closing socket...
