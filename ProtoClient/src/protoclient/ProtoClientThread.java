@@ -6,7 +6,6 @@
 
 package protoclient;
 
-import com.java.sparrow.protocol.ClientSchedulerProtoc;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -16,7 +15,6 @@ import com.java.sparrow.protocol.ClientSchedulerProtoc.NextMessageType;
 import com.java.sparrow.protocol.ClientSchedulerProtoc.SchedulerResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.AtomicCounter;
 /**
  *
  * @author anantoni

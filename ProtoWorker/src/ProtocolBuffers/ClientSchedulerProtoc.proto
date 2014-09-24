@@ -10,6 +10,7 @@ message NextMessageType {
         WORKER_RESPONSE = 2;
         PROBE = 3;
         TASK = 4;
+        HEARTBEAT = 5;
     }
     
     required MessageType type = 1 [default = PROBE_RESPONSE];

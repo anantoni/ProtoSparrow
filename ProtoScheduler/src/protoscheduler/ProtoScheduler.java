@@ -10,6 +10,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -26,11 +29,15 @@ public class ProtoScheduler {
         ExecutorService executorService = Executors.newFixedThreadPool(100);
         ServerSocket serverSocket = new ServerSocket(51000);
         
+        int fixedExecutorSize = 8;
+         //Creating fixed size executor
+        ThreadPoolExecutor taskCommExecutor = new ThreadPoolExecutor(fixedExecutorSize, fixedExecutorSize, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+        
         while(true) {
              Socket socket = serverSocket.accept();
              socket.setSoTimeout(3000);
              // process client connection..
-             executorService.execute(new GenericConnectionHandler(socket));
+             executorService.execute(new GenericConnectionHandler(socket, taskCommExecutor));
         }
     }
     

@@ -13,8 +13,12 @@ import java.net.SocketTimeoutException;
 import com.java.sparrow.protocol.ClientSchedulerProtoc.JobBatch;
 import com.java.sparrow.protocol.ClientSchedulerProtoc.NextMessageType;
 import com.java.sparrow.protocol.ClientSchedulerProtoc.SchedulerResponse;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import policies.RandomSchedulingPolicy;
+import policies.SchedulingPolicy;
+import utils.Task;
 /**
  *
  * @author anantoni
@@ -22,9 +26,11 @@ import java.util.logging.Logger;
 public class GenericConnectionHandler implements Runnable{
 
     private final Socket socket;
+    private final ThreadPoolExecutor taskCommExecutor;
  
-    public GenericConnectionHandler(Socket socket) {
+    public GenericConnectionHandler(Socket socket, ThreadPoolExecutor taskCommExecutor) {
         this.socket = socket;
+        this.taskCommExecutor = taskCommExecutor;
     }
  
     @Override
@@ -61,6 +67,15 @@ public class GenericConnectionHandler implements Runnable{
                 } catch (IOException ex) {
                     Logger.getLogger(GenericConnectionHandler.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                // set policy and select worker to send task to
+                SchedulingPolicy policy = new RandomSchedulingPolicy();
+                for (int i = 0; i < job.getTimesToExecute() ; i++)
+                     for (int j = 0; j < job.getTaskNumber() ; j++) {
+                         Socket workerSocket = policy.selectWorker();
+                         Task task = new Task(i, j, job.getTaskCommand());
+                         taskCommExecutor.execute(new TaskCommThread(task, workerSocket));
+                     }
             }                
         } catch (SocketTimeoutException e) {
             System.out.println("Connection timed out");
