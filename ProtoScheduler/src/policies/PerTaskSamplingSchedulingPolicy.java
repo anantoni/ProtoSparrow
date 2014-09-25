@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
+import utils.RandomGenerator;
 
 /**
  *
@@ -34,7 +34,6 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
     public Pair<String, Integer> selectWorker() {
         WorkerManager.getReadLock().lock();
         Map<String,String> workerMap = WorkerManager.getWorkerMap();        
-        Random random    = new Random();
         List<String> keys  = new ArrayList<>(workerMap.keySet());
         
         if (Collections.frequency(workerMap.values(), "OK") == 1) {
@@ -52,13 +51,13 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
         // Select a random active worker
         String workerURL = "";
         do {
-                workerURL = keys.get( random.nextInt(keys.size()) );           
+                workerURL = keys.get( RandomGenerator.getRandomGenerator().nextInt(keys.size()) );           
         } while (workerMap.get(workerURL).equals("DOWN"));
         
         // Select a second random active worker, different from the first one
         String workerURL1 = "";
         do {
-                workerURL1 = keys.get( random.nextInt(keys.size()) );           
+                workerURL1 = keys.get( RandomGenerator.getRandomGenerator().nextInt(keys.size()) );           
         } while (workerMap.get(workerURL1).equals("DOWN") || workerURL.equals(workerURL1));
         
         WorkerManager.getReadLock().unlock();
