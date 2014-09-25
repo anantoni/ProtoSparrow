@@ -28,7 +28,7 @@ public class ProtoClient {
         loadSchedulers();
         ExecutorService executor = Executors.newFixedThreadPool(4);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 400; i++) {
             Pair<String, Integer> chosenScheduler = chooseScheduler();
             Runnable worker = new ProtoClientThread( chosenScheduler.getKey(),
                                                                                          chosenScheduler.getValue(),

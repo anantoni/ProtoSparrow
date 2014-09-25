@@ -72,8 +72,8 @@ public class GenericConnectionHandler implements Runnable{
                 }
                 
                 // set policy and select worker to send task to
-                //SchedulingPolicy policy = new RandomSchedulingPolicy();
-                SchedulingPolicy policy = new PerTaskSamplingSchedulingPolicy();
+                SchedulingPolicy policy = new RandomSchedulingPolicy();
+                //SchedulingPolicy policy = new PerTaskSamplingSchedulingPolicy();
                 for (int i = 0; i < job.getTimesToExecute() ; i++)
                      for (int j = 0; j < job.getTaskNumber() ; j++) {
                          Pair<String, Integer> hp = policy.selectWorker();
