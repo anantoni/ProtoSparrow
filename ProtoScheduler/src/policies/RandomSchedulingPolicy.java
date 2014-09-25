@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
@@ -50,9 +51,8 @@ public class RandomSchedulingPolicy implements SchedulingPolicy {
                 Pair<String, Integer> hp;
                 String workerURL;
                 do {
-                        
                         List<String> keys  = new ArrayList<>(workerMap.keySet());
-                        workerURL = keys.get(RandomGenerator.getRandomGenerator().nextInt(keys.size()));    
+                        workerURL = keys.get(ThreadLocalRandom.current().nextInt(keys.size()));    
                         hp = HttpComm.splitURL(workerURL);
                 } while (workerMap.get(workerURL).equals("DOWN"));
                 WorkerManager.getReadLock().unlock();

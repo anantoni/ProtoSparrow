@@ -37,8 +37,8 @@ public class GenericConnectionHandler implements Runnable{
  
     @Override
     public void run() {
-         BufferedReader reader = null;
-         PrintWriter writer = null;
+         //BufferedReader reader = null;
+         //PrintWriter writer = null;
          
          try {
             //reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -88,8 +88,9 @@ public class GenericConnectionHandler implements Runnable{
             throw new RuntimeException(e);
         } finally {
             try {
-                if(reader != null) reader.close();
-                if(writer != null) writer.close();
+               // if(reader != null) reader.close();
+                //if(writer != null) writer.close();
+                socket.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

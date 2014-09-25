@@ -38,7 +38,7 @@ public class ProtoScheduler {
         
         System.out.println("Listening on port: " + args[0]);
         
-        int fixedExecutorSize = 8;
+        int fixedExecutorSize = 4;
          //Creating fixed size executor
         ThreadPoolExecutor taskCommExecutor = new ThreadPoolExecutor(fixedExecutorSize, 
                                                                      fixedExecutorSize, 0L, 

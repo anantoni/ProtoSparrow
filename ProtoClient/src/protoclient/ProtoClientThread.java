@@ -53,7 +53,7 @@ public class ProtoClientThread implements Runnable{
         //creating jobs for http requests to scheduler
 
         //set number of jobs
-        int numOfJobs = 1000;
+        int numOfJobs = 10;
 
         // build job batch message
         NextMessageType.Builder nextMessageType = NextMessageType.newBuilder();
@@ -69,12 +69,20 @@ public class ProtoClientThread implements Runnable{
         // make job selection depending on thread counter
         int jobSelection = threadCounter%2;
         System.out.println("job selection " + jobSelection);
-        if (jobSelection == 0)
+        if (jobSelection == 0) {
                 jobBatch.setTaskCommand("task3.sh");
-        else
+                jobBatch.setTaskNumber(10);
+        }
+        else {
+            if ( threadCounter%3 == 1) {
                 jobBatch.setTaskCommand("task4.sh");
-        jobBatch.setTaskNumber(100);
-
+                jobBatch.setTaskNumber(100);
+            }
+            else {
+                jobBatch.setTaskCommand("task1.sh");
+                jobBatch.setTaskNumber(10);
+            }
+        }
         // write job batch message to socket
         try {
             jobBatch.build().writeDelimitedTo (socket.getOutputStream());

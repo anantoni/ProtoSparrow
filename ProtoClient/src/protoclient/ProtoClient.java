@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
  * @author anantoni
  */
 public class ProtoClient {
-    private static ArrayList<Pair<String, String>> schedulers = new ArrayList<>();
+    private static final ArrayList<Pair<String, String>> schedulers = new ArrayList<>();
 
     /**
      * @param args the command line arguments
@@ -28,7 +28,7 @@ public class ProtoClient {
         loadSchedulers();
         ExecutorService executor = Executors.newFixedThreadPool(4);
 
-        for (int i = 0; i < 400; i++) {
+        for (int i = 0; i < 40; i++) {
             Pair<String, Integer> chosenScheduler = chooseScheduler();
             Runnable worker = new ProtoClientThread( chosenScheduler.getKey(),
                                                                                          chosenScheduler.getValue(),
