@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
 import utils.HttpComm;
+import utils.RandomGenerator;
 
 /**
  *
@@ -49,9 +50,9 @@ public class RandomSchedulingPolicy implements SchedulingPolicy {
                 Pair<String, Integer> hp;
                 String workerURL;
                 do {
-                        Random random    = new Random();
+                        
                         List<String> keys  = new ArrayList<>(workerMap.keySet());
-                        workerURL = keys.get(random.nextInt(keys.size()));    
+                        workerURL = keys.get(RandomGenerator.getRandomGenerator().nextInt(keys.size()));    
                         hp = HttpComm.splitURL(workerURL);
                 } while (workerMap.get(workerURL).equals("DOWN"));
                 WorkerManager.getReadLock().unlock();

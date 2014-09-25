@@ -1,0 +1,32 @@
+package ProtocolBuffers;
+
+option java_package = "com.java.sparrow.protocol";
+option java_outer_classname = "ClientSchedulerProtoc";
+
+message NextMessageType {
+    enum MessageType {
+        JOB_BATCH = 0;
+        PROBE_RESPONSE = 1;
+        WORKER_RESPONSE = 2;
+        PROBE = 3;
+        TASK = 4;
+        HEARTBEAT = 5;
+    }
+    
+    required MessageType type = 1 [default = PROBE_RESPONSE];
+}
+
+message JobBatch {
+    required int32 times_to_execute = 1;
+    required string task_command = 2;
+    required int32 task_number = 3;
+}
+
+message SchedulerResponse {
+    enum StatusType {
+        OK = 0;
+        FAIL = 1;
+    }
+    
+    required StatusType status = 1 [default = OK];
+}
