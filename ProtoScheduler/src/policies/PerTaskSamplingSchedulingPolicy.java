@@ -69,6 +69,7 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
         try {
             socket = new Socket(hp.getKey(), hp.getValue());
             result = HttpComm.probe(socket);
+            //System.out.println("Worker: " + hp.getKey() + " port: " + hp.getValue() + " probe result: " + result);
         } catch (IOException ex) {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
@@ -86,7 +87,8 @@ public class PerTaskSamplingSchedulingPolicy implements SchedulingPolicy {
         Socket socket1 = null;
         try {
             socket1 = new Socket(hp.getKey(), hp.getValue());
-            result = HttpComm.probe(socket1);
+            result1 = HttpComm.probe(socket1);
+            //System.out.println("Worker: " + hp1.getKey() + " port: " + hp1.getValue() + " probe result: " + result1);
         } catch (IOException ex) {
             Logger.getLogger(PerTaskSamplingSchedulingPolicy.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
